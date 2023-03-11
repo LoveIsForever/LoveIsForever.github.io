@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/03/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>图嵌入：DeepWalk算法</title>
     <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>Graph embedding</p>
@@ -23,22 +41,189 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/03/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>图嵌入：LINE算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>LINE算法原理：
+首先LINE算法对相似度的定义与其它算法不同：
+    ·一阶相似度：用于描述成对节点之间的相似度，若两节点之间有直连边，且边权较大，则这两点之间的相似度高；若两点间无直连边，则相似度为0。
+    有时候两节点虽然没有直连边，但是它们有很多相同的邻居，这也表明两节点是相似的，所以仅有一阶相似度是不够的。
+    ·二阶相似度：把某节点对其它节点的一阶相似度表示为向量，二阶相似度可以表示为两个节点的一阶相似度向量之间的相似度。若两节点不存在相同的邻居节点，则它们的二阶相似度为0.
+    
+因此，模型的优化目标就是优化相似度条件分布和经验分布之间的KL散度。
+具体算法：
+</code></pre>
+<p>  <a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
 ]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>LINE算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图嵌入：Node2Vec算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ANode2vec%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>node2vec是deepwalk的扩展，是一种有策略的随机游走，结合了BFS和DFS。
+   node2vec算法原理：
+    优化目标：在给定源节点条件下，其近邻节点出现的概率最大
+    为使上述优化目标可解，文章有两个基本假设：
+        1.条件独立性假设：假设给定源节点的情况下，其近邻节点出现的概率与近邻集合中的其它节点无关
+        2.特征空间对立性假设：假设一个节点作为源节点和作为邻居节点的嵌入向量相同
+    
+    随机游走采样策略：d表示下一次游走到的节点与上一次游走来的节点的距离。
+    当p较大时，当前随机游走趋向于在初始节点附近徘徊，是广度优先（BFS）；
+    当q较大时，当前随机游走趋向于远离初始节点，是深度优先（DFS）。
+    
+</code></pre>
+<p><img data-src="/images/pasted-12.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>Node2Vec算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图嵌入：SDNE算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>    SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。
+</code></pre>
+<p>SDNE算法原理：</p>
+<pre><code>相似度定义：
+    
+</code></pre>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>SDNE算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图嵌入：Struc2Vec算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9AStruc2Vec%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>    DeepWalk,LINE,Node2Vec,SDNE几个graph embedding方法，都基于近邻相似的假设，然而实际上，不相邻（离得远）的两个节点也可能有很高的相似性。Stuc2Vec就是解决这种问题的模型。
+    
+</code></pre>
+<p>   stuc2vec算法原理：</p>
+<pre><code>  · 相似度定义：struc2vec采用空间结构相似性来定义相似度。直观来看，具有相同度数的节点是相似的，若各自的邻接节点仍有相同度数，那么它们的相似性就更高。
+  
+  · 节点对距离的定义：
+      -与节点u距离为k的节点集合
+      -一个节点集合的有序度序列（度序列有序排序）
+      -通过比较两节点之间距离为k的节点集合的度序列来层次化衡量两节点间的结构相似度。
+      -定义两节点之间的k阶结构距离为k-1阶的结构距离加上两节点k阶度序列的距离。
+      -由于两节点的k阶度序列长度不同，且可能有重复元素，因此采用DTW来衡量度序列的距离
+      -DTW算法：动态时间规整（Dynamic Time Warping）相当于求序列之间距离最短的节点对集合的距离之和。序列元素之间的距离函数可以自定义。
+  
+  · 构建层次带权图：对于不同的k，我们通过上一节得到的节点对距离来构建一个层次化的带权图（用于之后的随机游走）。定义某一层中节点的边权，通过有向边将属于不同层次的同一节点连接起来，定义每一节点和上层节点、下层节点的边权值。层次带权图结构如下：
+  
+  
+</code></pre>
+<p><img data-src="/images/pasted-13.png" alt="upload successful"></p>
+<pre><code>· 随机游走策略：
+    -在构建出的层次带权图中进行随机游走
+    -首先在每一步之前，struc2vec的随机游走策略会首先决定它是否会改变图层或在当前图层上游走(概率q&gt;0，是一个用户设定的超参数)
+    -定义相应的游走概率，使得每次采样的节点更倾向于选择与当前节点结构相似的节点。
+· 三个优化技巧
+</code></pre>
+<p>  <a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>Struc2Vec算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一章 汇编语言基本概念</title>
+    <url>/2023/03/07/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<pre><code> 基本概念：
+·控制计算机工作的机器指令由二进制数构成，机器指令的集合是机器语言。
+·人类难以写出复杂的机器码，因此使用指令助记符来编写程序，这种程序叫做汇编语言。
+</code></pre>
+<p>第一节 进位计数制与不同基数的数之间的转换</p>
+<pre><code>*十进制数——&gt;N进制数
+        整数部分：除N取余，商零为止，结果先低后高。
+        小数部分：乘N取整，到零为止，结果先高后低。
+*十六进制和二进制互相转换：四位并作一位
+</code></pre>
+<p>第二节 二进制数与十六进制数运算</p>
+<pre><code>    1.算数运算
+    与十进制数类似
+    2.逻辑运算
+    按位进行，例：与，或，非，异或...
+</code></pre>
+<p>第三节 计算机中数和字符的表示</p>
+<pre><code>    1.无符号数（没有正负）
+    2.带符号数
+      用符号位表示：0-正数、1-负数
+        1）求补运算
+           -正数的补码是他本身
+           -负数的补码是对应正数按位取反后加1
+        2）补码
+           -计算机中用补码表示带符号数
+        3）补码的真值计算
+             -真值：补码表示的数值大小
+             -由最高位判断正负，若为正，真值为数值位；
+             -若为负，对该数求补后再求数值大小
+        4）用补码表示带符号数的意义
+             -将减法用加法实现（正数加负数），省去减法器
+             -无符号数和带符号数的加减法可用同一电路完成
+    3.8位、16位数的表示范围
+                无符号数     带符号数
+      8位         0~255      -128~127
+      16位       0~65535   -32768~32767
+    规定：	
+            8位 1000 0000 即 80H，表示-128D
+          16位 1000 0000 0000 0000 即 8000H，表示-32768D
+      
+    4.进位、借位、溢出的判断
+    1）进位：在加法过程中，最高有效位向高位产生进位
+    2）借位：在减法过程中，最高有效位向高位产生借位
+    3）溢出：指加减运算结果超出带符号数表示的范围
+       溢出判断方法：
+       -符号相同的两数相加，所得结果符号与之相反，结果溢出
+       -符号相反的两数相减，所得结果符号与减数相同，结果溢出
+       -其它情况不会产生溢出
+     
+</code></pre>
+<p> 四、二进制编码</p>
+<pre><code>     -计算机处理的信息：数值、字符
+     -字符在计算机中用二进制表示
+ASCII（美国标准信息交换码）
+        
+
+    
+</code></pre>
+]]></content>
+      <categories>
+        <category>计算机基础课程</category>
+        <category>汇编语言</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
   </entry>
   <entry>
     <title>第三章 进程描述和控制</title>
@@ -166,76 +351,6 @@
       </categories>
       <tags>
         <tag>操作系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一章 汇编语言基本概念</title>
-    <url>/2023/03/07/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<pre><code> 基本概念：
-·控制计算机工作的机器指令由二进制数构成，机器指令的集合是机器语言。
-·人类难以写出复杂的机器码，因此使用指令助记符来编写程序，这种程序叫做汇编语言。
-</code></pre>
-<p>第一节 进位计数制与不同基数的数之间的转换</p>
-<pre><code>*十进制数——&gt;N进制数
-        整数部分：除N取余，商零为止，结果先低后高。
-        小数部分：乘N取整，到零为止，结果先高后低。
-*十六进制和二进制互相转换：四位并作一位
-</code></pre>
-<p>第二节 二进制数与十六进制数运算</p>
-<pre><code>    1.算数运算
-    与十进制数类似
-    2.逻辑运算
-    按位进行，例：与，或，非，异或...
-</code></pre>
-<p>第三节 计算机中数和字符的表示</p>
-<pre><code>    1.无符号数（没有正负）
-    2.带符号数
-      用符号位表示：0-正数、1-负数
-        1）求补运算
-           -正数的补码是他本身
-           -负数的补码是对应正数按位取反后加1
-        2）补码
-           -计算机中用补码表示带符号数
-        3）补码的真值计算
-             -真值：补码表示的数值大小
-             -由最高位判断正负，若为正，真值为数值位；
-             -若为负，对该数求补后再求数值大小
-        4）用补码表示带符号数的意义
-             -将减法用加法实现（正数加负数），省去减法器
-             -无符号数和带符号数的加减法可用同一电路完成
-    3.8位、16位数的表示范围
-                无符号数     带符号数
-      8位         0~255      -128~127
-      16位       0~65535   -32768~32767
-    规定：	
-            8位 1000 0000 即 80H，表示-128D
-          16位 1000 0000 0000 0000 即 8000H，表示-32768D
-      
-    4.进位、借位、溢出的判断
-    1）进位：在加法过程中，最高有效位向高位产生进位
-    2）借位：在减法过程中，最高有效位向高位产生借位
-    3）溢出：指加减运算结果超出带符号数表示的范围
-       溢出判断方法：
-       -符号相同的两数相加，所得结果符号与之相反，结果溢出
-       -符号相反的两数相减，所得结果符号与减数相同，结果溢出
-       -其它情况不会产生溢出
-     
-</code></pre>
-<p> 四、二进制编码</p>
-<pre><code>     -计算机处理的信息：数值、字符
-     -字符在计算机中用二进制表示
-ASCII（美国标准信息交换码）
-        
-
-    
-</code></pre>
-]]></content>
-      <categories>
-        <category>计算机基础课程</category>
-        <category>汇编语言</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
       </tags>
   </entry>
   <entry>
@@ -371,31 +486,6 @@ ASCII（美国标准信息交换码）
       </categories>
       <tags>
         <tag>操作系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图嵌入：LINE算法</title>
-    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>Graph embedding</p>
-<pre><code>LINE算法原理：
-首先LINE算法对相似度的定义与其它算法不同：
-    ·一阶相似度：用于描述成对节点之间的相似度，若两节点之间有直连边，且边权较大，则这两点之间的相似度高；若两点间无直连边，则相似度为0。
-    有时候两节点虽然没有直连边，但是它们有很多相同的邻居，这也表明两节点是相似的，所以仅有一阶相似度是不够的。
-    ·二阶相似度：把某节点对其它节点的一阶相似度表示为向量，二阶相似度可以表示为两个节点的一阶相似度向量之间的相似度。若两节点不存在相同的邻居节点，则它们的二阶相似度为0.
-    
-因此，模型的优化目标就是优化相似度条件分布和经验分布之间的KL散度。
-具体算法：
-</code></pre>
-<p>  <a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
-]]></content>
-      <categories>
-        <category>图神经网络</category>
-        <category>图嵌入经典算法</category>
-        <category>LINE算法</category>
-      </categories>
-      <tags>
-        <tag>图神经网络</tag>
-        <tag>图表示学习</tag>
       </tags>
   </entry>
 </search>
