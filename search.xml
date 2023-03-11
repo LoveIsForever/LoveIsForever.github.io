@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/03/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>图嵌入：DeepWalk算法</title>
     <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>Graph embedding</p>
@@ -41,29 +23,22 @@
       </tags>
   </entry>
   <entry>
-    <title>图嵌入：LINE算法</title>
-    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>Graph embedding</p>
-<pre><code>LINE算法原理：
-首先LINE算法对相似度的定义与其它算法不同：
-    ·一阶相似度：用于描述成对节点之间的相似度，若两节点之间有直连边，且边权较大，则这两点之间的相似度高；若两点间无直连边，则相似度为0。
-    有时候两节点虽然没有直连边，但是它们有很多相同的邻居，这也表明两节点是相似的，所以仅有一阶相似度是不够的。
-    ·二阶相似度：把某节点对其它节点的一阶相似度表示为向量，二阶相似度可以表示为两个节点的一阶相似度向量之间的相似度。若两节点不存在相同的邻居节点，则它们的二阶相似度为0.
-    
-因此，模型的优化目标就是优化相似度条件分布和经验分布之间的KL散度。
-具体算法：
-</code></pre>
-<p>  <a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+    <title>Hello World</title>
+    <url>/2023/03/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>图神经网络</category>
-        <category>图嵌入经典算法</category>
-        <category>DeepWalk算法</category>
-      </categories>
-      <tags>
-        <tag>图神经网络</tag>
-        <tag>图表示学习</tag>
-      </tags>
   </entry>
   <entry>
     <title>第三章 进程描述和控制</title>
@@ -396,6 +371,31 @@ ASCII（美国标准信息交换码）
       </categories>
       <tags>
         <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图嵌入：LINE算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>LINE算法原理：
+首先LINE算法对相似度的定义与其它算法不同：
+    ·一阶相似度：用于描述成对节点之间的相似度，若两节点之间有直连边，且边权较大，则这两点之间的相似度高；若两点间无直连边，则相似度为0。
+    有时候两节点虽然没有直连边，但是它们有很多相同的邻居，这也表明两节点是相似的，所以仅有一阶相似度是不够的。
+    ·二阶相似度：把某节点对其它节点的一阶相似度表示为向量，二阶相似度可以表示为两个节点的一阶相似度向量之间的相似度。若两节点不存在相同的邻居节点，则它们的二阶相似度为0.
+    
+因此，模型的优化目标就是优化相似度条件分布和经验分布之间的KL散度。
+具体算法：
+</code></pre>
+<p>  <a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>LINE算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
       </tags>
   </entry>
 </search>
