@@ -188,6 +188,175 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XYuan">
+      <meta itemprop="description" content="这个人很懒，什么都没留下">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XYuan‘s blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ALINE%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">图嵌入：LINE算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-11 12:59:00 / 修改时间：13:21:47" itemprop="dateCreated datePublished" datetime="2023-03-11T12:59:00+08:00">2023-03-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">图神经网络</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/%E5%9B%BE%E5%B5%8C%E5%85%A5%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">图嵌入经典算法</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/%E5%9B%BE%E5%B5%8C%E5%85%A5%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/DeepWalk%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">DeepWalk算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Graph embedding</p>
+<pre><code>LINE算法原理：
+首先LINE算法对相似度的定义与其它算法不同：
+    ·一阶相似度：用于描述成对节点之间的相似度，若两节点之间有直连边，且边权较大，则这两点之间的相似度高；若两点间无直连边，则相似度为0。
+    有时候两节点虽然没有直连边，但是它们有很多相同的邻居，这也表明两节点是相似的，所以仅有一阶相似度是不够的。
+    ·二阶相似度：把某节点对其它节点的一阶相似度表示为向量，二阶相似度可以表示为两个节点的一阶相似度向量之间的相似度。若两节点不存在相同的邻居节点，则它们的二阶相似度为0.
+    
+因此，模型的优化目标就是优化相似度条件分布和经验分布之间的KL散度。
+具体算法：
+</code></pre>
+<p>  <a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XYuan">
+      <meta itemprop="description" content="这个人很懒，什么都没留下">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XYuan‘s blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">图嵌入：DeepWalk算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-11 12:43:00 / 修改时间：12:58:37" itemprop="dateCreated datePublished" datetime="2023-03-11T12:43:00+08:00">2023-03-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">图神经网络</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/%E5%9B%BE%E5%B5%8C%E5%85%A5%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">图嵌入经典算法</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/%E5%9B%BE%E5%B5%8C%E5%85%A5%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/DeepWalk%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">DeepWalk算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Graph embedding</p>
+<pre><code>DeepWalk算法原理：
+    -使用随机游走采样节点序列，把每个节点看作单词，应用word2vec算法
+    具体分为以下两个步骤：
+    ①构建同构网络，从网络中的每个节点开始分别进行Random Walk采样，得到局部相关联的训练数据； ②对采样数据进行SkipGram训练，将离散的网络节点表示成向量化，最大化节点共现，使用Hierarchical Softmax来做超大规模分类的分类器
+    代码实现：
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0%E5%92%8C%E6%8E%A7%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -621,20 +790,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
