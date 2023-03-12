@@ -22,19 +22,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Graph embedding     SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。  SDNE算法原理： 相似度定义：">
+  <meta name="description" content="Graph embedding     SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。  SDNE算法原理： 相似度定义：     SDNE中的相似度定义跟Line是一样的，其一阶相似度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图嵌入：SDNE算法">
 <meta property="og:url" content="http://example.com/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="XYuan‘s blog">
-<meta property="og:description" content="Graph embedding     SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。  SDNE算法原理： 相似度定义：">
+<meta property="og:description" content="Graph embedding     SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。  SDNE算法原理： 相似度定义：     SDNE中的相似度定义跟Line是一样的，其一阶相似度">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/pasted-14.png">
 <meta property="article:published_time" content="2023-03-11T14:07:00.000Z">
-<meta property="article:modified_time" content="2023-03-11T14:20:58.696Z">
+<meta property="article:modified_time" content="2023-03-12T04:48:29.449Z">
 <meta property="article:author" content="XYuan">
 <meta property="article:tag" content="图神经网络">
 <meta property="article:tag" content="图表示学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/pasted-14.png">
 
 <link rel="canonical" href="http://example.com/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/">
 
@@ -215,10 +217,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-11 22:07:00 / 修改时间：22:20:58" itemprop="dateCreated datePublished" datetime="2023-03-11T22:07:00+08:00">2023-03-11</time>
+              <time title="创建时间：2023-03-11 22:07:00" itemprop="dateCreated datePublished" datetime="2023-03-11T22:07:00+08:00">2023-03-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-12 12:48:29" itemprop="dateModified" datetime="2023-03-12T12:48:29+08:00">2023-03-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -253,8 +261,14 @@
 </code></pre>
 <p>SDNE算法原理：</p>
 <pre><code>相似度定义：
+    SDNE中的相似度定义跟Line是一样的，其一阶相似度是衡量相邻两个节点对之间的相似度，二阶相似度衡量的是两个节点邻居集合之间的相似度。
+    二阶相似度优化目标：使用邻接矩阵作为输入，对于第i个节点，矩阵的第i行就包含了节点i的邻居结构信息，所以这样的重构过程能够使得结构相似的顶点具有相似的embedding表示向量。同时使用带权损失函数，对于非零元素有更高的惩罚系数，用于处理稀疏矩阵。
+    一阶相似度优化目标：定义损失函数让图中相邻的两个定点的嵌入向量在隐藏空间中接近。
+    整体优化目标：一阶相似度损失函数+二阶相似度损失函数+正则化项
     
+    模型结构：
 </code></pre>
+<p><img data-src="/images/pasted-14.png" alt="upload successful"><br><a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
 
     </div>
 

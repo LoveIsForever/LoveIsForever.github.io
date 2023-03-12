@@ -211,10 +211,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-11 22:07:00 / 修改时间：22:20:58" itemprop="dateCreated datePublished" datetime="2023-03-11T22:07:00+08:00">2023-03-11</time>
+              <time title="创建时间：2023-03-11 22:07:00" itemprop="dateCreated datePublished" datetime="2023-03-11T22:07:00+08:00">2023-03-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-12 12:48:29" itemprop="dateModified" datetime="2023-03-12T12:48:29+08:00">2023-03-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -249,9 +255,22 @@
 </code></pre>
 <p>SDNE算法原理：</p>
 <pre><code>相似度定义：
+    SDNE中的相似度定义跟Line是一样的，其一阶相似度是衡量相邻两个节点对之间的相似度，二阶相似度衡量的是两个节点邻居集合之间的相似度。
+    二阶相似度优化目标：使用邻接矩阵作为输入，对于第i个节点，矩阵的第i行就包含了节点i的邻居结构信息，所以这样的重构过程能够使得结构相似的顶点具有相似的embedding表示向量。同时使用带权损失函数，对于非零元素有更高的惩罚系数，用于处理稀疏矩阵。
+    一阶相似度优化目标：定义损失函数让图中相邻的两个定点的嵌入向量在隐藏空间中接近。
+    整体优化目标：一阶相似度损失函数+二阶相似度损失函数+正则化项
     
+    模型结构：
 </code></pre>
-
+<p><img data-src="/images/pasted-14.png" alt="upload successful"><br><a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>图嵌入：DeepWalk算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>DeepWalk算法原理：
+    -使用随机游走采样节点序列，把每个节点看作单词，应用word2vec算法
+    具体分为以下两个步骤：
+    ①构建同构网络，从网络中的每个节点开始分别进行Random Walk采样，得到局部相关联的训练数据； ②对采样数据进行SkipGram训练，将离散的网络节点表示成向量化，最大化节点共现，使用Hierarchical Softmax来做超大规模分类的分类器
+    代码实现：
+</code></pre>
+<p><a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>DeepWalk算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/03/06/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -19,21 +41,26 @@
 ]]></content>
   </entry>
   <entry>
-    <title>图嵌入：DeepWalk算法</title>
-    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ADeepWalk%E7%AE%97%E6%B3%95/</url>
+    <title>图嵌入：SDNE算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<p>Graph embedding</p>
-<pre><code>DeepWalk算法原理：
-    -使用随机游走采样节点序列，把每个节点看作单词，应用word2vec算法
-    具体分为以下两个步骤：
-    ①构建同构网络，从网络中的每个节点开始分别进行Random Walk采样，得到局部相关联的训练数据； ②对采样数据进行SkipGram训练，将离散的网络节点表示成向量化，最大化节点共现，使用Hierarchical Softmax来做超大规模分类的分类器
-    代码实现：
+<pre><code>    SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。
 </code></pre>
-<p><a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
+<p>SDNE算法原理：</p>
+<pre><code>相似度定义：
+    SDNE中的相似度定义跟Line是一样的，其一阶相似度是衡量相邻两个节点对之间的相似度，二阶相似度衡量的是两个节点邻居集合之间的相似度。
+    二阶相似度优化目标：使用邻接矩阵作为输入，对于第i个节点，矩阵的第i行就包含了节点i的邻居结构信息，所以这样的重构过程能够使得结构相似的顶点具有相似的embedding表示向量。同时使用带权损失函数，对于非零元素有更高的惩罚系数，用于处理稀疏矩阵。
+    一阶相似度优化目标：定义损失函数让图中相邻的两个定点的嵌入向量在隐藏空间中接近。
+    整体优化目标：一阶相似度损失函数+二阶相似度损失函数+正则化项
+    
+    模型结构：
+</code></pre>
+<p><img data-src="/images/pasted-14.png" alt="upload successful"><br><a href="https://github.com/shenweichen/GraphEmbedding">https://github.com/shenweichen/GraphEmbedding</a></p>
 ]]></content>
       <categories>
         <category>图神经网络</category>
         <category>图嵌入经典算法</category>
-        <category>DeepWalk算法</category>
+        <category>SDNE算法</category>
       </categories>
       <tags>
         <tag>图神经网络</tag>
@@ -59,55 +86,6 @@
         <category>图神经网络</category>
         <category>图嵌入经典算法</category>
         <category>LINE算法</category>
-      </categories>
-      <tags>
-        <tag>图神经网络</tag>
-        <tag>图表示学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图嵌入：Node2Vec算法</title>
-    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ANode2vec%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>Graph embedding</p>
-<pre><code>node2vec是deepwalk的扩展，是一种有策略的随机游走，结合了BFS和DFS。
-   node2vec算法原理：
-    优化目标：在给定源节点条件下，其近邻节点出现的概率最大
-    为使上述优化目标可解，文章有两个基本假设：
-        1.条件独立性假设：假设给定源节点的情况下，其近邻节点出现的概率与近邻集合中的其它节点无关
-        2.特征空间对立性假设：假设一个节点作为源节点和作为邻居节点的嵌入向量相同
-    
-    随机游走采样策略：d表示下一次游走到的节点与上一次游走来的节点的距离。
-    当p较大时，当前随机游走趋向于在初始节点附近徘徊，是广度优先（BFS）；
-    当q较大时，当前随机游走趋向于远离初始节点，是深度优先（DFS）。
-    
-</code></pre>
-<p><img data-src="/images/pasted-12.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>图神经网络</category>
-        <category>图嵌入经典算法</category>
-        <category>Node2Vec算法</category>
-      </categories>
-      <tags>
-        <tag>图神经网络</tag>
-        <tag>图表示学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图嵌入：SDNE算法</title>
-    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ASDNE%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<p>Graph embedding</p>
-<pre><code>    SDNE（Structural Deep Network Embedding ）可以看作是Line算法的扩展。SDNE使用一个自动编码器结构来同时优化1阶和2阶相似度(LINE是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。
-</code></pre>
-<p>SDNE算法原理：</p>
-<pre><code>相似度定义：
-    
-</code></pre>
-]]></content>
-      <categories>
-        <category>图神经网络</category>
-        <category>图嵌入经典算法</category>
-        <category>SDNE算法</category>
       </categories>
       <tags>
         <tag>图神经网络</tag>
@@ -149,6 +127,34 @@
         <category>图神经网络</category>
         <category>图嵌入经典算法</category>
         <category>Struc2Vec算法</category>
+      </categories>
+      <tags>
+        <tag>图神经网络</tag>
+        <tag>图表示学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图嵌入：Node2Vec算法</title>
+    <url>/2023/03/11/%E5%9B%BE%E5%B5%8C%E5%85%A5%EF%BC%9ANode2vec%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>Graph embedding</p>
+<pre><code>node2vec是deepwalk的扩展，是一种有策略的随机游走，结合了BFS和DFS。
+   node2vec算法原理：
+    优化目标：在给定源节点条件下，其近邻节点出现的概率最大
+    为使上述优化目标可解，文章有两个基本假设：
+        1.条件独立性假设：假设给定源节点的情况下，其近邻节点出现的概率与近邻集合中的其它节点无关
+        2.特征空间对立性假设：假设一个节点作为源节点和作为邻居节点的嵌入向量相同
+    
+    随机游走采样策略：d表示下一次游走到的节点与上一次游走来的节点的距离。
+    当p较大时，当前随机游走趋向于在初始节点附近徘徊，是广度优先（BFS）；
+    当q较大时，当前随机游走趋向于远离初始节点，是深度优先（DFS）。
+    
+</code></pre>
+<p><img data-src="/images/pasted-12.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>图神经网络</category>
+        <category>图嵌入经典算法</category>
+        <category>Node2Vec算法</category>
       </categories>
       <tags>
         <tag>图神经网络</tag>
